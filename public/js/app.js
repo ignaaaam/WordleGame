@@ -33,7 +33,7 @@ var Tile = /*#__PURE__*/function () {
     key: "fill",
     value: // correct, present, absent
     function fill(key) {
-      this.letter = key.toUpperCase();
+      this.letter = key.toLowerCase();
     }
   }, {
     key: "empty",
@@ -86,8 +86,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   guessesAllowed: 3,
-  wordLength: 3,
+  theWord: 'cat',
   currentRowIndex: 0,
+  state: 'active',
+  message: '',
+
+  get currentGuess() {
+    return this.currentRow.map(function (tile) {
+      return tile.letter;
+    }).join('');
+  },
+
   init: function init() {
     var _this = this;
 
@@ -95,19 +104,23 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       length: this.guessesAllowed
     }, function () {
       return Array.from({
-        length: _this.wordLength
+        length: _this.theWord.length
       }, function () {
         return new _Tile__WEBPACK_IMPORTED_MODULE_0__["default"]();
       });
     });
   },
   onKeyPress: function onKeyPress(key) {
+    this.message = '';
+
     if (/^[A-z]$/.test(key)) {
       this.fillTile(key);
+    } else if (key === 'Enter') {
+      this.submitGuess();
     }
   },
   fillTile: function fillTile(key) {
-    var _iterator = _createForOfIteratorHelper(this.currentRow()),
+    var _iterator = _createForOfIteratorHelper(this.currentRow),
         _step;
 
     try {
@@ -124,17 +137,43 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     } finally {
       _iterator.f();
     }
+  },
+  submitGuess: function submitGuess() {
+    var guess = this.currentGuess;
 
-    if (this.currentTileIndex === this.wordLength - 1) {
-      this.currentRowIndex++;
-      this.currentTileIndex = 0;
+    if (guess.length < this.theWord.length) {
+      return;
+    } // update tile colors
+
+
+    this.refreshTileStatusForCurrentRow();
+
+    if (guess === this.theWord) {
+      this.message = 'You Win!';
+    } else if (this.guessesAllowed === this.currentRowIndex + 1) {
+      this.message = 'Game Over. You Lose';
+      this.state = 'complete';
     } else {
-      this.currentTileIndex++;
+      this.message = 'Incorrect';
+      this.currentRowIndex++;
     }
   },
-  currentRow: function currentRow() {
+  refreshTileStatusForCurrentRow: function refreshTileStatusForCurrentRow() {
+    var _this2 = this;
+
+    this.currentRow.forEach(function (tile, index) {
+      tile.status = _this2.theWord.includes(tile.letter) ? 'present' : 'absent';
+
+      if (_this2.currentGuess[index] === _this2.theWord[index]) {
+        tile.status = 'correct';
+      }
+    });
+  },
+
+  get currentRow() {
     return this.board[this.currentRowIndex];
   }
+
 });
 
 /***/ }),

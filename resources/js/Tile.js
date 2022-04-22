@@ -3,7 +3,7 @@ export default class Tile {
     status = ''; // correct, present, absent
 
     fill(key) {
-        this.letter = key.toUpperCase();
+        this.letter = key.toLowerCase();
     }
 
     empty() {
