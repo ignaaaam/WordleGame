@@ -1,4 +1,5 @@
 import Tile from "./Tile";
+import words from './words';
 
 export default {
 
@@ -6,16 +7,26 @@ export default {
     theWord: 'cat',
     currentRowIndex: 0,
     state: 'active',
+    errors: false,
     message: '',
-
+    /**
+     *
+     * @returns {Tile[]}
+     */
     get currentRow() {
         return this.board[this.currentRowIndex];
     },
-
+    /**
+     *
+     * @returns {string}
+     */
     get currentGuess() {
         return this.currentRow.map(tile => tile.letter).join('');
     },
-
+    /**
+     *
+     * @returns {number}
+     */
     get remainingGuesses() {
         return this.guessesAllowed - this.currentRowIndex - 1;
     },
@@ -25,9 +36,13 @@ export default {
             return Array.from({length: this.theWord.length}, () => new Tile);
         });
     },
-
+    /**
+     *
+     * @param key
+     */
     onKeyPress(key) {
         this.message = '';
+        this.errors = false;
 
         if (/^[A-z]$/.test(key)) {
             this.fillTile(key);
@@ -37,7 +52,10 @@ export default {
             this.submitGuess();
         }
     },
-
+    /**
+     *
+     * @param key
+     */
     fillTile(key) {
         for (let tile of this.currentRow) {
             if (!tile.letter) {
@@ -47,7 +65,6 @@ export default {
             }
         }
     },
-
     emptyTile() {
         for (let tile of [...this.currentRow].reverse()) {
             if(tile.letter) {
@@ -57,15 +74,43 @@ export default {
             }
         }
     },
-
+    /**
+     *
+     * @returns {string}
+     */
     submitGuess() {
         if (this.currentGuess.length < this.theWord.length) {
             return;
         }
 
-        for (let tile of this.currentRow) {
-            tile.updateStatus(this.currentGuess, this.theWord);
+        if (! words.includes(this.currentGuess.toUpperCase())) {
+            this.errors = true;
+            return this.message = 'Invalid word...';
         }
+
+        // if (! await this.checkDictionary(this.currentGuess)) {
+        //     this.errors = true;
+        // }
+
+        this.currentRow.forEach(( tile, index) => {
+            if (! this.theWord.includes(tile.letter)) {
+                return tile.status = 'absent';
+            }
+
+            if (this.letter === this.theWord[index]){
+                return tile.status = 'correct';
+            }
+
+            tile.status = 'present';
+        });
+
+        this.currentRow.forEach((tile, index) => {
+            if (tile.status !== 'present') return;
+
+            if (this.currentRow.some(t => t.letter === tile.letter && t.status === 'correct')) {
+                tile.status = 'absent';
+            }
+        });
 
         if (this.currentGuess === this.theWord) {
             this.state = 'complete';
