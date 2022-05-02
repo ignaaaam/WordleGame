@@ -12,6 +12,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Tile)
 /* harmony export */ });
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -21,33 +27,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var Tile = /*#__PURE__*/function () {
-  function Tile() {
+  // correct, present, absent
+  function Tile(position) {
     _classCallCheck(this, Tile);
 
-    _defineProperty(this, "letter", '');
+    _defineProperty(this, "letter", "");
 
-    _defineProperty(this, "status", '');
+    _defineProperty(this, "status", "");
+
+    this.position = position;
   }
 
   _createClass(Tile, [{
     key: "updateStatus",
-    value: // correct, present, absent
+    value: function updateStatus(theWord) {
+      if (!theWord.includes(this.letter)) {
+        return this.status = "absent";
+      }
 
-    /**
-     *
-     * @param currentGuess
-     * @param theWord
-     */
-    function updateStatus(currentGuess, theWord) {// this.status = theWord.includes(this.letter) ? 'present' : 'absent';
-      // if(currentGuess.indexOf(this.letter) === theWord.indexOf(this.letter)) {
-      //     this.status = 'correct';
-      // }
+      if (this.letter === theWord[this.position]) {
+        return this.status = "correct";
+      }
+
+      this.status = "present";
     }
-    /**
-     *
-     * @param key
-     */
-
   }, {
     key: "fill",
     value: function fill(key) {
@@ -56,7 +59,34 @@ var Tile = /*#__PURE__*/function () {
   }, {
     key: "empty",
     value: function empty() {
-      this.letter = '';
+      this.letter = "";
+    }
+  }], [{
+    key: "updateStatusesForRow",
+    value: function updateStatusesForRow(row, theWord) {
+      var _iterator = _createForOfIteratorHelper(row),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var tile = _step.value;
+          tile.updateStatus(theWord);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      row.filter(function (tile) {
+        return tile.status === "present";
+      }).filter(function (tile) {
+        return row.some(function (t) {
+          return t.letter === tile.letter && t.status === "correct";
+        });
+      }).forEach(function (tile) {
+        return tile.status = "absent";
+      });
     }
   }]);
 
@@ -96,17 +126,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Tile__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tile */ "./resources/js/Tile.js");
 /* harmony import */ var _words__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./words */ "./resources/js/words.js");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
@@ -114,34 +144,23 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   guessesAllowed: 3,
-  theWord: 'cat',
+  theWord: "cat",
   currentRowIndex: 0,
-  state: 'active',
+  state: "active",
   errors: false,
-  message: '',
+  message: "",
+  letters: ["QWERTYUIOP".split(""), "ASDFGHJKL".split(""), ["Enter"].concat(_toConsumableArray("ZXCVBNM".split("")), ["Backspace"])],
 
-  /**
-   *
-   * @returns {Tile[]}
-   */
   get currentRow() {
     return this.board[this.currentRowIndex];
   },
 
-  /**
-   *
-   * @returns {string}
-   */
   get currentGuess() {
     return this.currentRow.map(function (tile) {
       return tile.letter;
-    }).join('');
+    }).join("");
   },
 
-  /**
-   *
-   * @returns {number}
-   */
   get remainingGuesses() {
     return this.guessesAllowed - this.currentRowIndex - 1;
   },
@@ -154,33 +173,32 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }, function () {
       return Array.from({
         length: _this.theWord.length
-      }, function () {
-        return new _Tile__WEBPACK_IMPORTED_MODULE_0__["default"]();
+      }, function (item, index) {
+        return new _Tile__WEBPACK_IMPORTED_MODULE_0__["default"](index);
       });
     });
   },
-
-  /**
-   *
-   * @param key
-   */
+  matchingTileForKey: function matchingTileForKey(key) {
+    return this.board.flat().filter(function (tile) {
+      return tile.status;
+    }).sort(function (t1, t2) {
+      return t2.status === "correct";
+    }).find(function (tile) {
+      return tile.letter === key.toLowerCase();
+    });
+  },
   onKeyPress: function onKeyPress(key) {
-    this.message = '';
+    this.message = "";
     this.errors = false;
 
     if (/^[A-z]$/.test(key)) {
       this.fillTile(key);
-    } else if (key === 'Backspace') {
+    } else if (key === "Backspace") {
       this.emptyTile();
-    } else if (key === 'Enter') {
+    } else if (key === "Enter") {
       this.submitGuess();
     }
   },
-
-  /**
-   *
-   * @param key
-   */
   fillTile: function fillTile(key) {
     var _iterator = _createForOfIteratorHelper(this.currentRow),
         _step;
@@ -219,59 +237,30 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       _iterator2.f();
     }
   },
-
-  /**
-   *
-   * @returns {string}
-   */
   submitGuess: function submitGuess() {
-    var _this2 = this;
-
     if (this.currentGuess.length < this.theWord.length) {
       return;
     }
 
     if (!_words__WEBPACK_IMPORTED_MODULE_1__["default"].includes(this.currentGuess.toUpperCase())) {
       this.errors = true;
-      return this.message = 'Invalid word...';
-    } // if (! await this.checkDictionary(this.currentGuess)) {
-    //     this.errors = true;
-    // }
+      return this.message = "Invalid word...";
+    }
 
-
-    this.currentRow.forEach(function (tile, index) {
-      if (!_this2.theWord.includes(tile.letter)) {
-        return tile.status = 'absent';
-      }
-
-      if (_this2.letter === _this2.theWord[index]) {
-        return tile.status = 'correct';
-      }
-
-      tile.status = 'present';
-    });
-    this.currentRow.forEach(function (tile, index) {
-      if (tile.status !== 'present') return;
-
-      if (_this2.currentRow.some(function (t) {
-        return t.letter === tile.letter && t.status === 'correct';
-      })) {
-        tile.status = 'absent';
-      }
-    });
+    _Tile__WEBPACK_IMPORTED_MODULE_0__["default"].updateStatusesForRow(this.currentRow, this.theWord);
 
     if (this.currentGuess === this.theWord) {
-      this.state = 'complete';
-      return this.message = 'You Win!';
+      this.state = "complete";
+      return this.message = "You Win!";
     }
 
     if (this.remainingGuesses === 0) {
-      this.state = 'complete';
-      return this.message = 'Game Over. You Lose';
+      this.state = "complete";
+      return this.message = "Game Over. You Lose";
     }
 
     this.currentRowIndex++;
-    return this.message = 'Incorrect';
+    return this.message = "Incorrect";
   }
 });
 

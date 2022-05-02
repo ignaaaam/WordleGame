@@ -1,61 +1,62 @@
 import Tile from "./Tile";
-import words from './words';
+import words from "./words";
 
 export default {
-
     guessesAllowed: 3,
-    theWord: 'cat',
+    theWord: "cat",
     currentRowIndex: 0,
-    state: 'active',
+    state: "active",
     errors: false,
-    message: '',
-    /**
-     *
-     * @returns {Tile[]}
-     */
+    message: "",
+
+    letters: [
+        "QWERTYUIOP".split(""),
+        "ASDFGHJKL".split(""),
+        ["Enter", ..."ZXCVBNM".split(""), "Backspace"],
+    ],
+
     get currentRow() {
         return this.board[this.currentRowIndex];
     },
-    /**
-     *
-     * @returns {string}
-     */
+
     get currentGuess() {
-        return this.currentRow.map(tile => tile.letter).join('');
+        return this.currentRow.map((tile) => tile.letter).join("");
     },
-    /**
-     *
-     * @returns {number}
-     */
+
     get remainingGuesses() {
         return this.guessesAllowed - this.currentRowIndex - 1;
     },
 
     init() {
-        this.board = Array.from({length: this.guessesAllowed}, () => {
-            return Array.from({length: this.theWord.length}, () => new Tile);
+        this.board = Array.from({ length: this.guessesAllowed }, () => {
+            return Array.from(
+                { length: this.theWord.length },
+                (item, index) => new Tile(index)
+            );
         });
     },
-    /**
-     *
-     * @param key
-     */
+
+    matchingTileForKey(key) {
+        return this.board
+            .flat()
+            .filter(tile => tile.status)
+            .sort((t1, t2) => t2.status === "correct")
+            .find(tile => tile.letter === key.toLowerCase());
+    },
+
     onKeyPress(key) {
-        this.message = '';
+        this.message = "";
         this.errors = false;
 
         if (/^[A-z]$/.test(key)) {
             this.fillTile(key);
-        } else if (key === 'Backspace') {
+        } else if (key === "Backspace") {
             this.emptyTile();
-        } else if (key === 'Enter') {
+        } else if (key === "Enter") {
             this.submitGuess();
         }
     },
-    /**
-     *
-     * @param key
-     */
+
     fillTile(key) {
         for (let tile of this.currentRow) {
             if (!tile.letter) {
@@ -67,64 +68,41 @@ export default {
     },
     emptyTile() {
         for (let tile of [...this.currentRow].reverse()) {
-            if(tile.letter) {
+            if (tile.letter) {
                 tile.empty();
 
                 break;
             }
         }
     },
-    /**
-     *
-     * @returns {string}
-     */
+
     submitGuess() {
         if (this.currentGuess.length < this.theWord.length) {
             return;
         }
 
-        if (! words.includes(this.currentGuess.toUpperCase())) {
+        if (!words.includes(this.currentGuess.toUpperCase())) {
             this.errors = true;
-            return this.message = 'Invalid word...';
+
+            return this.message = "Invalid word...";
         }
 
-        // if (! await this.checkDictionary(this.currentGuess)) {
-        //     this.errors = true;
-        // }
-
-        this.currentRow.forEach(( tile, index) => {
-            if (! this.theWord.includes(tile.letter)) {
-                return tile.status = 'absent';
-            }
-
-            if (this.letter === this.theWord[index]){
-                return tile.status = 'correct';
-            }
-
-            tile.status = 'present';
-        });
-
-        this.currentRow.forEach((tile, index) => {
-            if (tile.status !== 'present') return;
-
-            if (this.currentRow.some(t => t.letter === tile.letter && t.status === 'correct')) {
-                tile.status = 'absent';
-            }
-        });
+        Tile.updateStatusesForRow(this.currentRow, this.theWord);
 
         if (this.currentGuess === this.theWord) {
-            this.state = 'complete';
+            this.state = "complete";
 
-            return this.message = 'You Win!';
+            return this.message = "You Win!";
         }
 
         if (this.remainingGuesses === 0) {
-            this.state = 'complete';
+            this.state = "complete";
 
-            return this.message = 'Game Over. You Lose';
+            return this.message = "Game Over. You Lose";
         }
+
         this.currentRowIndex++;
 
-        return this.message = 'Incorrect';
-    }
-}
+        return this.message = "Incorrect";
+    },
+};
