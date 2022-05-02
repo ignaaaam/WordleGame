@@ -3,7 +3,8 @@ import { threeWords, theWords } from "./3-letter-words";
 
 
 export default {
-    guessesAllowed: Math.floor(Math.random() * 4) + 2,
+    // guessesAllowed: Math.floor(Math.random() * 4) + 2,
+    guessesAllowed: 4,
     theWord: threeWords[Math.floor(Math.random() * threeWords.length)],
     currentRowIndex: 0,
     state: "active",
@@ -13,7 +14,7 @@ export default {
     letters: [
         "QWERTYUIOP".split(""),
         "ASDFGHJKL".split(""),
-        ["Backspace", ..."ZXCVBNM".split(""), "Enter"],
+        ["Delete", ..."ZXCVBNM".split(""), "Enter"],
     ],
 
     get currentRow() {
@@ -51,7 +52,7 @@ export default {
 
         if (/^[A-z]$/.test(key)) {
             this.fillTile(key);
-        } else if (key === "Backspace") {
+        } else if (key === "Backspace" || key === "Delete") {
             this.emptyTile();
         } else if (key === "Enter") {
             this.submitGuess();

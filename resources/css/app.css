@@ -23,7 +23,6 @@ main {
     place-items: center;
 
     padding-top: 50px;
-    padding-bottom: 100px;
 }
 
 h1 {
@@ -82,6 +81,7 @@ h1 {
 }
 
 #keyboard {
+    width: 100%;
     margin-top: 2rem;
 }
 
@@ -161,6 +161,66 @@ output:empty {
     color: #496e9e;
 }
 
+
+
+.section__how {
+    display: grid;
+    place-items: center;
+    margin-top: 50px;
+
+    background-color: #194362;
+
+    padding: 4rem;
+}
+
+.heading {
+    font-size: 2rem;
+}
+
+.rules {
+    width: 50%;
+    text-align: center;
+    font-style: normal;
+    font-weight: lighter;
+}
+
+.section__soon {
+    display: grid;
+    place-items: center;
+
+    padding: 4rem;
+}
+
+.soon {
+    color: var(--present-color);
+    text-shadow: 0 0 12px #FDC53A;
+    animation: glow 2s, float 3s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+
+    text-align: center;
+}
+
+@keyframes glow {
+    50% {
+        text-shadow: 0 0 0 #FDC53A;
+    }
+}
+@keyframes float {
+    0% {
+    
+    transform: translatey(0px);
+}
+50% {
+   
+    transform: translatey(-20px);
+}
+100% {
+   
+    transform: translatey(0px);
+}
+}
+
 .author-link {
     color: inherit;
 }
@@ -168,6 +228,10 @@ output:empty {
 .coffe-button {
     display: grid;
     place-items: center;
+}
+
+footer {
+    padding-bottom: 50px;
 }
 
 @media only screen and (max-width: 720px) {
@@ -187,5 +251,27 @@ output:empty {
         font-size: 15px;
     
         transition: background .1s ease-in-out;
+    }
+
+    .section__how {
+        margin-top: 50px;
+    
+        background-color: #194362;
+    
+        padding: 4rem;
+    }
+
+    .rules {
+        width: 80%;
+        text-align: center;
+        font-style: normal;
+        font-weight: lighter;
+    }
+
+    .section__soon {
+        display: grid;
+        place-items: center;
+    
+        padding: 4rem;
     }
   }

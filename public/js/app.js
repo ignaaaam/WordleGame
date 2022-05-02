@@ -173,13 +173,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  guessesAllowed: Math.floor(Math.random() * 4) + 2,
+  // guessesAllowed: Math.floor(Math.random() * 4) + 2,
+  guessesAllowed: 4,
   theWord: _3_letter_words__WEBPACK_IMPORTED_MODULE_1__.threeWords[Math.floor(Math.random() * _3_letter_words__WEBPACK_IMPORTED_MODULE_1__.threeWords.length)],
   currentRowIndex: 0,
   state: "active",
   errors: false,
   message: "",
-  letters: ["QWERTYUIOP".split(""), "ASDFGHJKL".split(""), ["Backspace"].concat(_toConsumableArray("ZXCVBNM".split("")), ["Enter"])],
+  letters: ["QWERTYUIOP".split(""), "ASDFGHJKL".split(""), ["Delete"].concat(_toConsumableArray("ZXCVBNM".split("")), ["Enter"])],
 
   get currentRow() {
     return this.board[this.currentRowIndex];
@@ -223,7 +224,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     if (/^[A-z]$/.test(key)) {
       this.fillTile(key);
-    } else if (key === "Backspace") {
+    } else if (key === "Backspace" || key === "Delete") {
       this.emptyTile();
     } else if (key === "Enter") {
       this.submitGuess();
