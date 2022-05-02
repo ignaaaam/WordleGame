@@ -1,9 +1,10 @@
 import Tile from "./Tile";
-import words from "./words";
+import { threeWords, theWords } from "./3-letter-words";
+
 
 export default {
-    guessesAllowed: 3,
-    theWord: "cat",
+    guessesAllowed: Math.floor(Math.random() * 4) + 2,
+    theWord: threeWords[Math.floor(Math.random() * threeWords.length)],
     currentRowIndex: 0,
     state: "active",
     errors: false,
@@ -12,7 +13,7 @@ export default {
     letters: [
         "QWERTYUIOP".split(""),
         "ASDFGHJKL".split(""),
-        ["Enter", ..."ZXCVBNM".split(""), "Backspace"],
+        ["Backspace", ..."ZXCVBNM".split(""), "Enter"],
     ],
 
     get currentRow() {
@@ -39,9 +40,9 @@ export default {
     matchingTileForKey(key) {
         return this.board
             .flat()
-            .filter(tile => tile.status)
+            .filter((tile) => tile.status)
             .sort((t1, t2) => t2.status === "correct")
-            .find(tile => tile.letter === key.toLowerCase());
+            .find((tile) => tile.letter === key.toLowerCase());
     },
 
     onKeyPress(key) {
@@ -81,10 +82,11 @@ export default {
             return;
         }
 
-        if (!words.includes(this.currentGuess.toUpperCase())) {
+        if (!threeWords.includes(this.currentGuess.toUpperCase())) {
             this.errors = true;
+            this.message = "Invalid word...";
 
-            return this.message = "Invalid word...";
+            return;
         }
 
         Tile.updateStatusesForRow(this.currentRow, this.theWord);
@@ -92,17 +94,51 @@ export default {
         if (this.currentGuess === this.theWord) {
             this.state = "complete";
 
-            return this.message = "You Win!";
-        }
+            this.message = "You Win!";
 
-        if (this.remainingGuesses === 0) {
+            var count = 200;
+            var defaults = {
+                origin: { y: 0.7 },
+            };
+
+            function fire(particleRatio, opts) {
+                confetti(
+                    Object.assign({}, defaults, opts, {
+                        particleCount: Math.floor(count * particleRatio),
+                    })
+                );
+            }
+
+            fire(0.25, {
+                spread: 26,
+                startVelocity: 55,
+            });
+            fire(0.2, {
+                spread: 60,
+            });
+            fire(0.35, {
+                spread: 100,
+                decay: 0.91,
+                scalar: 0.8,
+            });
+            fire(0.1, {
+                spread: 120,
+                startVelocity: 25,
+                decay: 0.92,
+                scalar: 1.2,
+            });
+            fire(0.1, {
+                spread: 120,
+                startVelocity: 45,
+            });
+        } else if (this.remainingGuesses === 0) {
             this.state = "complete";
 
-            return this.message = "Game Over. You Lose";
+            this.message = `Game Over. You Lose. The word was ${this.theWord.toUpperCase()}`;
+        } else {
+            this.currentRowIndex++;
+
+            //this.message = "Incorrect";
         }
-
-        this.currentRowIndex++;
-
-        return this.message = "Incorrect";
     },
 };

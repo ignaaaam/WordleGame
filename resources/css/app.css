@@ -21,6 +21,9 @@ body {
 main {
     display: grid;
     place-items: center;
+
+    padding-top: 50px;
+    padding-bottom: 100px;
 }
 
 h1 {
@@ -157,3 +160,32 @@ output:empty {
     display: none;
     color: #496e9e;
 }
+
+.author-link {
+    color: inherit;
+}
+
+.coffe-button {
+    display: grid;
+    place-items: center;
+}
+
+@media only screen and (max-width: 720px) {
+    .logo {
+        width: 80%;
+    }
+
+    .key {
+
+
+        margin: 2px;
+        height: 50px;
+        min-width: 35px;
+        border-radius: 4px;
+
+    
+        font-size: 15px;
+    
+        transition: background .1s ease-in-out;
+    }
+  }

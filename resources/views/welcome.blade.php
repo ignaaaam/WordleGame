@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="/css/app.css">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="/js/app.js"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
 </head>
 <body>
@@ -22,7 +24,7 @@
     >
 
         <h1 aria-label="TryCat">
-            <img src="/images/trycat-logo.svg" alt="">
+            <img class="logo" src="/images/trycat-logo.svg" alt="">
         </h1>
         
         <div id="game">
@@ -34,7 +36,7 @@
                 </div>
             </template>
         </div>
-        
+
         <output x-text="message"></output>
         
 
@@ -54,5 +56,13 @@
             
         </div>
     </main>
+    <footer>
+        <div class="footer-container">
+            <p>Made with &hearts; by <a class="author-link" href="http://www.ignathedev.com" target="_blank" rel="noopener noreferrer">Ignacio Amat</a></p>
+        </div>
+        <div class="coffe-button">
+            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="ignasiamatz" data-color="#5F7FFF" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+        </div>
+    </footer>
 </body>
 </html>
