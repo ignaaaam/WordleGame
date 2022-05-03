@@ -48,6 +48,8 @@
 
         gtag('config', 'G-GVY294CEVN');
     </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2554731149063338"
+    crossorigin="anonymous"></script>
 </head>
 <body>
     <main x-data="game"
