@@ -139,7 +139,7 @@
                     data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff"
                     data-coffee-color="#FFDD00"></script>
             </div>
-            <p class="not-affiliated">thewordlegame.com is not affiliated with "Wordle" by NYTimes in any way</p>
+            <p class="not-affiliated">wordlethegame.com is not affiliated with "Wordle" by NYTimes in any way</p>
         </div>
     </footer>
 </body>
