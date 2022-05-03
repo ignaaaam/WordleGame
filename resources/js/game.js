@@ -4,7 +4,7 @@ import { threeWords, theWords } from "./3-letter-words";
 
 export default {
     // guessesAllowed: Math.floor(Math.random() * 4) + 2,
-    guessesAllowed: 4,
+    guessesAllowed: 5,
     theWord: threeWords[Math.floor(Math.random() * threeWords.length)],
     currentRowIndex: 0,
     state: "active",
