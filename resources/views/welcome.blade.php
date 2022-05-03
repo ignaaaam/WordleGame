@@ -16,11 +16,11 @@
     <meta property="og:site_name" content="TryCat - The Wordle Game">
     <meta property="og:width" content="1024">
     <meta property="og:height" content="1024">
-    <meta property="og:image" content="https://wordlethegame.com/public/images/wordlegame.png">
+    <meta property="og:image" content="https://wordlethegame.com/images/wordlegame.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Trycat - The Wordle Game">
     <meta name="twitter:description" content="Play Wordle with unlimited words! Guess words of 3 letters (more will be added in the future). Can you guess the hidden word in 5 tries?">
-    <meta name="twitter:image" content="https://wordlethegame.com/public/images/wordlegame.png">
+    <meta name="twitter:image" content="https://wordlethegame.com/images/wordlegame.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
