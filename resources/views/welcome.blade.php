@@ -92,6 +92,32 @@
                 <h1 class="heading">Wordle Game: Guess the Hidden Word</h1>
                 <p class="rules">The rules are very simple: You need to guess the hidden word in 5 tries. To get started, just type any word on the first line. If the letter is guessed correctly and is in the correct place, it will be highlighted in green, if the letter is in the word, but in the wrong place - in yellow, and if the letter is not in the word, it will remain gray. Can you guess the hidden word in 5 tries?</p>
         </section>
+        
+        <section class="section__howto">
+            <div class="container">
+                <div class="wordle-text">
+                    <h1 class="heading heading__title ">How to play the Wordle Game?</h1>
+                    <ol class="howto__list">
+                        <li class="list__item">
+                            <h3>Type the first word</h3>
+                            <p>To start just type a 3 letter word & press Enter to find out which letters match the hidden word.
+                                you'll have 5 tries to guess the hidden word</p>
+                            <img class="how-1" src="/images/how1.png" alt="Type the first word">
+                        </li>
+                        <li class="list__item">
+                            <h3>Find out what letters are in the hidden word</h3>
+                            <p>If any letters are marked in yellow, this means that this letter is in the hidden word, but doesn't match the exact location in this word. If any letter is marked in green, then it is in that word and is in the exact location. If the letter doesnt show any color, then it isn't in the hidden word.</p>
+                            <img class="how-2" src="/images/how2.png" alt="">
+                        </li>
+                        <li class="list__item">
+                            <h3>Try to guess the hidden word</h3>
+                            <p>Now if you know a few letters with the exact location (green) and a few letters that are in the word (yellow) you can try to solve the hidden word and win the game!</p>
+                            <img class="how-3" src="/images/how3.png" alt="">
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
         <section class="section__soon">
             <h1 class="heading heading__title soon">Coming Soon...</h1>
             <div class="soon">

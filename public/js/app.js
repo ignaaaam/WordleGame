@@ -176,6 +176,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   // guessesAllowed: Math.floor(Math.random() * 4) + 2,
   guessesAllowed: 5,
   theWord: _3_letter_words__WEBPACK_IMPORTED_MODULE_1__.threeWords[Math.floor(Math.random() * _3_letter_words__WEBPACK_IMPORTED_MODULE_1__.threeWords.length)],
+  // theWord: 'cat',
   currentRowIndex: 0,
   state: "active",
   errors: false,

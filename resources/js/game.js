@@ -6,6 +6,7 @@ export default {
     // guessesAllowed: Math.floor(Math.random() * 4) + 2,
     guessesAllowed: 5,
     theWord: threeWords[Math.floor(Math.random() * threeWords.length)],
+    // theWord: 'cat',
     currentRowIndex: 0,
     state: "active",
     errors: false,
