@@ -21,10 +21,10 @@
     <meta name="twitter:title" content="Trycat - The Wordle Game">
     <meta name="twitter:description" content="Play Wordle with unlimited words! Guess words of 3 letters (more will be added in the future). Can you guess the hidden word in 5 tries?">
     <meta name="twitter:image" content="https://wordlethegame.com/public/images/wordlegame.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/public/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/public/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/public/images/favicon-16x16.png">
-
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +55,7 @@
     >
 
         <h1 aria-label="TryCat">
-            <img class="logo" src="/images/trycat-logo.svg" alt="">
+            <img class="logo" src="/images/trycat-logo.svg" alt="trycat logo">
         </h1>
         
         <div id="game">
