@@ -340,6 +340,8 @@ footer {
 .footer-container {
     display: grid;
     place-items: center;
+
+    text-align: center;
 }
 
 .author-link {
@@ -358,6 +360,8 @@ footer {
 
     color: rgb(163, 163, 163);
     opacity: .5;
+
+    text-align: center;
 }
 
 
