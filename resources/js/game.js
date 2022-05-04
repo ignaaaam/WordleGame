@@ -5,7 +5,7 @@ import { threeWords, theWords } from "./3-letter-words";
 export default {
     // guessesAllowed: Math.floor(Math.random() * 4) + 2,
     guessesAllowed: 5,
-    theWord: threeWords[Math.floor(Math.random() * threeWords.length)],
+    theWord: threeWords[Math.floor(Math.random() * threeWords.length)].toLowerCase(),
     
     // theWord: 'cat',
     currentRowIndex: 0,
@@ -38,14 +38,6 @@ export default {
                 (item, index) => new Tile(index)
             );
         });
-    },
-
-    matchingTileForKey(key) {
-        return this.board
-            .flat()
-            .filter((tile) => tile.status)
-            .sort((t1, t2) => t2.status === "correct")
-            .find((tile) => tile.letter === key.toLowerCase());
     },
 
     onKeyPress(key) {
@@ -140,8 +132,14 @@ export default {
             this.message = `Game Over. You Lose. The word was ${this.theWord.toUpperCase()}`;
         } else {
             this.currentRowIndex++;
-
-            //this.message = "Incorrect";
         }
+    },
+
+    matchingTileForKey(key) {
+        return this.board
+            .flat()
+            .filter((tile) => tile.status)
+            .sort((t1, t2) => t2.status === "correct")
+            .find((tile) => tile.letter === key.toLowerCase());
     },
 };

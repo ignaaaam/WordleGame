@@ -54,7 +54,7 @@ var Tile = /*#__PURE__*/function () {
   _createClass(Tile, [{
     key: "fill",
     value: function fill(key) {
-      this.letter = key.toUpperCase();
+      this.letter = key.toLowerCase();
     }
   }, {
     key: "empty",
@@ -64,7 +64,7 @@ var Tile = /*#__PURE__*/function () {
   }], [{
     key: "updateStatusesForRow",
     value: function updateStatusesForRow(row, theWord) {
-      theWord = theWord.split('');
+      theWord = theWord.split(""); // check for correct letters...
 
       var _iterator = _createForOfIteratorHelper(row),
           _step;
@@ -77,14 +77,17 @@ var Tile = /*#__PURE__*/function () {
             tile.status = "correct";
             theWord[tile.position] = null;
           }
-        }
+        } // check for present letters...
+
       } catch (err) {
         _iterator.e(err);
       } finally {
         _iterator.f();
       }
 
-      var _iterator2 = _createForOfIteratorHelper(row),
+      var _iterator2 = _createForOfIteratorHelper(row.filter(function (tile) {
+        return !tile.status;
+      })),
           _step2;
 
       try {
@@ -95,7 +98,8 @@ var Tile = /*#__PURE__*/function () {
             _tile.status = "present";
             theWord[theWord.indexOf(_tile.letter)] = null;
           }
-        }
+        } // anything that remains is absent...
+
       } catch (err) {
         _iterator2.e(err);
       } finally {
@@ -175,7 +179,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   // guessesAllowed: Math.floor(Math.random() * 4) + 2,
   guessesAllowed: 5,
-  theWord: _3_letter_words__WEBPACK_IMPORTED_MODULE_1__.threeWords[Math.floor(Math.random() * _3_letter_words__WEBPACK_IMPORTED_MODULE_1__.threeWords.length)],
+  theWord: _3_letter_words__WEBPACK_IMPORTED_MODULE_1__.threeWords[Math.floor(Math.random() * _3_letter_words__WEBPACK_IMPORTED_MODULE_1__.threeWords.length)].toLowerCase(),
   // theWord: 'cat',
   currentRowIndex: 0,
   state: "active",
@@ -208,15 +212,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }, function (item, index) {
         return new _Tile__WEBPACK_IMPORTED_MODULE_0__["default"](index);
       });
-    });
-  },
-  matchingTileForKey: function matchingTileForKey(key) {
-    return this.board.flat().filter(function (tile) {
-      return tile.status;
-    }).sort(function (t1, t2) {
-      return t2.status === "correct";
-    }).find(function (tile) {
-      return tile.letter === key.toLowerCase();
     });
   },
   onKeyPress: function onKeyPress(key) {
@@ -323,8 +318,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.state = "complete";
       this.message = "Game Over. You Lose. The word was ".concat(this.theWord.toUpperCase());
     } else {
-      this.currentRowIndex++; //this.message = "Incorrect";
+      this.currentRowIndex++;
     }
+  },
+  matchingTileForKey: function matchingTileForKey(key) {
+    return this.board.flat().filter(function (tile) {
+      return tile.status;
+    }).sort(function (t1, t2) {
+      return t2.status === "correct";
+    }).find(function (tile) {
+      return tile.letter === key.toLowerCase();
+    });
   }
 });
 
