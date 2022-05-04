@@ -30,7 +30,7 @@ export default class Tile {
     }
 
     fill(key) {
-        this.letter = key.toLowerCase();
+        this.letter = key.toUpperCase();
     }
 
     empty() {

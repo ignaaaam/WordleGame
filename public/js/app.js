@@ -54,7 +54,7 @@ var Tile = /*#__PURE__*/function () {
   _createClass(Tile, [{
     key: "fill",
     value: function fill(key) {
-      this.letter = key.toLowerCase();
+      this.letter = key.toUpperCase();
     }
   }, {
     key: "empty",

@@ -6,6 +6,7 @@ export default {
     // guessesAllowed: Math.floor(Math.random() * 4) + 2,
     guessesAllowed: 5,
     theWord: threeWords[Math.floor(Math.random() * threeWords.length)],
+    
     // theWord: 'cat',
     currentRowIndex: 0,
     state: "active",
@@ -30,7 +31,7 @@ export default {
         return this.guessesAllowed - this.currentRowIndex - 1;
     },
 
-    init() {
+    init() {        
         this.board = Array.from({ length: this.guessesAllowed }, () => {
             return Array.from(
                 { length: this.theWord.length },
