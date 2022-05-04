@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/soon', function () {
-    return view('soon');
-});
+Route::any('{query}',
+    function() { return redirect('/'); })
+    ->where('query', '.*');
