@@ -88,6 +88,8 @@
             </template>
         </div>
 
+        <iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=48&l=ur1&category=pw&banner=0EY4WWAVQJ8VYDJQHT02&f=ifr&t=ignathedev-21&tracking_id=ignathedev-21" width="728" height="90" scrolling="no" border="0" marginwidth="0" style="border:none; margin-top: 1rem;" frameborder="0" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+
         <section class="section__how">
                 <h1 class="heading">Wordle Game: Guess the Hidden Word</h1>
                 <p class="rules">The rules are very simple: You need to guess the hidden word in 5 tries. To get started, just type any word on the first line. If the letter is guessed correctly and is in the correct place, it will be highlighted in green, if the letter is in the word, but in the wrong place - in yellow, and if the letter is not in the word, it will remain gray. Can you guess the hidden word in 5 tries?</p>
@@ -127,6 +129,7 @@
                 <h2 class="soon__hedaing soon">Dictionary Improvement</h2>
             </div>
         </section>
+        <iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=48&l=ur1&category=pw&banner=0EY4WWAVQJ8VYDJQHT02&f=ifr&t=ignathedev-21&tracking_id=ignathedev-21" width="728" height="90" scrolling="no" border="0" marginwidth="0" style="border:none; margin-top: 1rem;" frameborder="0" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
     </main>
     <footer>
         <div class="footer-container">
