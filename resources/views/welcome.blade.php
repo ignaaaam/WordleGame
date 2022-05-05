@@ -87,8 +87,9 @@
                 </div>
             </template>
         </div>
-
-        <iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=48&l=ur1&category=pw&banner=0EY4WWAVQJ8VYDJQHT02&f=ifr&t=ignathedev-21&tracking_id=ignathedev-21" width="728" height="90" scrolling="no" border="0" marginwidth="0" style="border:none; margin-top: 1rem;" frameborder="0" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+        <iframe class="prime-iframe1" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=22&l=ur1&category=pw&banner=1TS7TCAWVBJWGNBTWF02&f=ifr&linkID=0c96f835c11e2e9cc1b61279c9bd3175&t=ignathedev-21&tracking_id=ignathedev-21" width="250" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+        <iframe class="prime-iframe2" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=13&l=ur1&category=pw&banner=156QRCST8H1YEB0GVER2&f=ifr&linkID=65aabbf832e42c7c98faaec224f69efe&t=ignathedev-21&tracking_id=ignathedev-21" width="468" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+        <iframe class="prime-iframe3" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=48&l=ur1&category=pw&banner=0EY4WWAVQJ8VYDJQHT02&f=ifr&t=ignathedev-21&tracking_id=ignathedev-21" width="728" height="90" scrolling="no" border="0" marginwidth="0" style="border:none; margin-top: 1rem;" frameborder="0" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
 
         <section class="section__how">
                 <h1 class="heading">Wordle Game: Guess the Hidden Word</h1>
@@ -129,7 +130,9 @@
                 <h2 class="soon__hedaing soon">Dictionary Improvement</h2>
             </div>
         </section>
-        <iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=48&l=ur1&category=pw&banner=0EY4WWAVQJ8VYDJQHT02&f=ifr&t=ignathedev-21&tracking_id=ignathedev-21" width="728" height="90" scrolling="no" border="0" marginwidth="0" style="border:none; margin-top: 1rem;" frameborder="0" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+        <iframe class="video-iframe1" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=22&l=ur1&category=prime_video&banner=13AGZ2WR14JSQE7P1402&f=ifr&linkID=8ab236e77d3e09d21453e64c629c7222&t=ignathedev-21&tracking_id=ignathedev-21" width="250" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+        <iframe class="video-iframe2" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=12&l=ur1&category=prime_video&banner=093TP09QSWSGKXVP9S82&f=ifr&linkID=65813d1143bae535f7f4fc876ee41a45&t=ignathedev-21&tracking_id=ignathedev-21" width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+        <iframe class="video-iframe3" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=48&l=ur1&category=prime_video&banner=1WM3P83JBRAEDHZ74YR2&f=ifr&linkID=22d39bac0acbe05da26012619a65489b&t=ignathedev-21&tracking_id=ignathedev-21" width="728" height="90" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
     </main>
     <footer>
         <div class="footer-container">
