@@ -1,4 +1,4 @@
-export let fourWords=[
+export let fourWords = [
     "AAHS",
     "AALS",
     "ABAC",
