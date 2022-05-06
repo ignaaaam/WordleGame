@@ -37,6 +37,10 @@ h1 {
     margin-bottom: 1.5rem;
 }
 
+iframe {
+    display: none;
+}
+
 #game {
     color: white;
     background-image: linear-gradient(153deg, #1c2b45 13%, #0c1321 85%), linear-gradient(149deg, #fec63b 3%, rgba(254, 198, 59, 0) 80%);
@@ -364,6 +368,20 @@ footer {
     text-align: center;
 }
 
+.iframe1 {
+    margin-top: 2rem;
+    display: block;
+}
+
+.iframe2 {
+    margin-top: 2rem;
+    display: block;
+}
+.iframe3 {
+    margin-top: 2rem;
+    display: block;
+}
+
 
 
 @media only screen and (max-width: 720px) {
@@ -409,6 +427,98 @@ footer {
         place-items: center;
     
         padding: 4rem;
+    }
+  }
+
+  /* AMAZON AFFILIATE QUERIES */
+
+  @media only screen and (min-width: 320px) { 
+    .prime-iframe1 {
+        margin-top: 2rem;
+        display: block;
+    }
+    
+    .prime-iframe2 {
+        margin-top: 2rem;
+        display: none;
+    }
+    .prime-iframe3 {
+        margin-top: 2rem;
+        display: none;
+    }
+
+    .video-iframe1 {
+        margin-top: 2rem;
+        display: block;
+    }
+    
+    .video-iframe2 {
+        margin-top: 2rem;
+        display: none;
+    }
+    .video-iframe3 {
+        margin-top: 2rem;
+        display: none;
+    }
+  }
+
+  @media only screen and (min-width: 568px) { 
+    .prime-iframe1 {
+        margin-top: 2rem;
+        display: none;
+    }
+    
+    .prime-iframe2 {
+        margin-top: 2rem;
+        display: block;
+    }
+    .prime-iframe3 {
+        margin-top: 2rem;
+        display: none;
+    }
+
+    .video-iframe1 {
+        margin-top: 2rem;
+        display: none;
+    }
+    
+    .video-iframe2 {
+        margin-top: 2rem;
+        display: block;
+    }
+    .video-iframe3 {
+        margin-top: 2rem;
+        display: none;
+    }
+  }
+
+  @media only screen and (min-width: 768px) { 
+    .prime-iframe1 {
+        margin-top: 2rem;
+        display: none;
+    }
+    
+    .prime-iframe2 {
+        margin-top: 2rem;
+        display: none;
+    }
+    .prime-iframe3 {
+        margin-top: 2rem;
+        display: block;
+    }
+
+    .video-iframe1 {
+        margin-top: 2rem;
+        display: none;
+    }
+    
+    .video-iframe2 {
+        margin-top: 2rem;
+        display: none;
+    }
+    .video-iframe3 {
+        margin-top: 2rem;
+        display: block;
     }
   }
 

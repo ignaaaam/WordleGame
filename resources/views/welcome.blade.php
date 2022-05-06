@@ -38,7 +38,6 @@
     <script src="/js/app.js"></script>
    
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVY294CEVN"></script>
     <script>
