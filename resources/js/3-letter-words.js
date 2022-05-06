@@ -1248,5 +1248,5 @@ export let threeWords=[
     "YEN",
     "YEP",
     "YES",
-    "YET",
+    "YET"
 ];
