@@ -35,7 +35,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="css/app.css">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="/js/app.js"></script>
    
