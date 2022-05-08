@@ -14,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('home');
 
-Route::any('{query}',
+Route::get('/404', function () {
+    return view('errors.404');
+})->name('not-found');
+
+/*Route::any('{query}',
     function() { return redirect('/'); })
-    ->where('query', '.*');
+    ->where('query', '.*');*/

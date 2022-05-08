@@ -1,5 +1,5 @@
 import Tile from "./Tile";
-import { threeWords, theWords } from "./3-letter-words";
+import { threeWords, theWords } from "./3-letter-words.min";
 
 
 export default {

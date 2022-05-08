@@ -138,20 +138,20 @@ var Tile = /*#__PURE__*/function () {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./game */ "./resources/js/game.js");
+/* harmony import */ var _game_min_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./game.min.js */ "./resources/js/game.min.js");
 
 document.addEventListener('alpine:init', function () {
   Alpine.data('game', function () {
-    return _game__WEBPACK_IMPORTED_MODULE_0__["default"];
+    return _game_min_js__WEBPACK_IMPORTED_MODULE_0__["default"];
   });
 });
 
 /***/ }),
 
-/***/ "./resources/js/game.js":
-/*!******************************!*\
-  !*** ./resources/js/game.js ***!
-  \******************************/
+/***/ "./resources/js/game.min.js":
+/*!**********************************!*\
+  !*** ./resources/js/game.min.js ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -177,13 +177,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  // guessesAllowed: Math.floor(Math.random() * 4) + 2,
   guessesAllowed: 5,
   theWord: _3_letter_words__WEBPACK_IMPORTED_MODULE_1__.threeWords[Math.floor(Math.random() * _3_letter_words__WEBPACK_IMPORTED_MODULE_1__.threeWords.length)].toLowerCase(),
-  // theWord: 'cat',
   currentRowIndex: 0,
   state: "active",
-  errors: false,
+  errors: !1,
   message: "",
   letters: ["QWERTYUIOP".split(""), "ASDFGHJKL".split(""), ["Delete"].concat(_toConsumableArray("ZXCVBNM".split("")), ["Enter"])],
 
@@ -192,8 +190,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
 
   get currentGuess() {
-    return this.currentRow.map(function (tile) {
-      return tile.letter;
+    return this.currentRow.map(function (e) {
+      return e.letter;
     }).join("");
   },
 
@@ -209,33 +207,24 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }, function () {
       return Array.from({
         length: _this.theWord.length
-      }, function (item, index) {
-        return new _Tile__WEBPACK_IMPORTED_MODULE_0__["default"](index);
+      }, function (e, t) {
+        return new _Tile__WEBPACK_IMPORTED_MODULE_0__["default"](t);
       });
     });
   },
-  onKeyPress: function onKeyPress(key) {
-    this.message = "";
-    this.errors = false;
-
-    if (/^[A-z]$/.test(key)) {
-      this.fillTile(key);
-    } else if (key === "Backspace" || key === "Delete") {
-      this.emptyTile();
-    } else if (key === "Enter") {
-      this.submitGuess();
-    }
+  onKeyPress: function onKeyPress(e) {
+    this.message = "", this.errors = !1, /^[A-z]$/.test(e) ? this.fillTile(e) : "Backspace" === e || "Delete" === e ? this.emptyTile() : "Enter" === e && this.submitGuess();
   },
-  fillTile: function fillTile(key) {
+  fillTile: function fillTile(e) {
     var _iterator = _createForOfIteratorHelper(this.currentRow),
         _step;
 
     try {
       for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var tile = _step.value;
+        var t = _step.value;
 
-        if (!tile.letter) {
-          tile.fill(key);
+        if (!t.letter) {
+          t.fill(e);
           break;
         }
       }
@@ -251,10 +240,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     try {
       for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-        var tile = _step2.value;
+        var e = _step2.value;
 
-        if (tile.letter) {
-          tile.empty();
+        if (e.letter) {
+          e.empty();
           break;
         }
       }
@@ -265,69 +254,51 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
   },
   submitGuess: function submitGuess() {
-    if (this.currentGuess.length < this.theWord.length) {
-      return;
-    }
+    if (!(this.currentGuess.length < this.theWord.length)) {
+      if (!_3_letter_words__WEBPACK_IMPORTED_MODULE_1__.threeWords.includes(this.currentGuess.toUpperCase())) return this.errors = !0, void (this.message = "Invalid word...");
 
-    if (!_3_letter_words__WEBPACK_IMPORTED_MODULE_1__.threeWords.includes(this.currentGuess.toUpperCase())) {
-      this.errors = true;
-      this.message = "Invalid word...";
-      return;
-    }
+      if (_Tile__WEBPACK_IMPORTED_MODULE_0__["default"].updateStatusesForRow(this.currentRow, this.theWord), this.currentGuess === this.theWord) {
+        var r = function r(_r, s) {
+          confetti(Object.assign({}, t, s, {
+            particleCount: Math.floor(e * _r)
+          }));
+        };
 
-    _Tile__WEBPACK_IMPORTED_MODULE_0__["default"].updateStatusesForRow(this.currentRow, this.theWord);
-
-    if (this.currentGuess === this.theWord) {
-      var fire = function fire(particleRatio, opts) {
-        confetti(Object.assign({}, defaults, opts, {
-          particleCount: Math.floor(count * particleRatio)
-        }));
-      };
-
-      this.state = "complete";
-      this.message = "You Win!";
-      var count = 200;
-      var defaults = {
-        origin: {
-          y: 0.7
-        }
-      };
-      fire(0.25, {
-        spread: 26,
-        startVelocity: 55
-      });
-      fire(0.2, {
-        spread: 60
-      });
-      fire(0.35, {
-        spread: 100,
-        decay: 0.91,
-        scalar: 0.8
-      });
-      fire(0.1, {
-        spread: 120,
-        startVelocity: 25,
-        decay: 0.92,
-        scalar: 1.2
-      });
-      fire(0.1, {
-        spread: 120,
-        startVelocity: 45
-      });
-    } else if (this.remainingGuesses === 0) {
-      this.state = "complete";
-      this.message = "Game Over. You Lose. The word was ".concat(this.theWord.toUpperCase());
-    } else {
-      this.currentRowIndex++;
+        this.state = "complete", this.message = "You Win!";
+        var e = 200,
+            t = {
+          origin: {
+            y: .7
+          }
+        };
+        r(.25, {
+          spread: 26,
+          startVelocity: 55
+        }), r(.2, {
+          spread: 60
+        }), r(.35, {
+          spread: 100,
+          decay: .91,
+          scalar: .8
+        }), r(.1, {
+          spread: 120,
+          startVelocity: 25,
+          decay: .92,
+          scalar: 1.2
+        }), r(.1, {
+          spread: 120,
+          startVelocity: 45
+        });
+      } else 0 === this.remainingGuesses ? (this.state = "complete", this.message = "Game Over. You Lose. The word was ".concat(this.theWord.toUpperCase())) : this.currentRowIndex++;
     }
   },
-  matchingTileForKey: function matchingTileForKey(key) {
-    return this.board.flat().filter(function (tile) {
-      return tile.status;
-    }).sort(function (t1, t2) {
-      return t2.status === "correct";
-    }).find(function (tile) {
-      return tile.letter === key.toLowerCase();
+  matchingTileForKey: function matchingTileForKey(e) {
+    return this.board.flat().filter(function (e) {
+      return e.status;
+    }).sort(function (e, t) {
+      return "correct" === t.status;
+    }).find(function (t) {
+      return t.letter === e.toLowerCase();
     });
   }
 });

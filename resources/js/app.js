@@ -1,5 +1,5 @@
 
-import game from './game';
+import game from './game.min.js';
 
 
 document.addEventListener('alpine:init', () => {
