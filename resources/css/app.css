@@ -428,7 +428,7 @@ footer {
   }
 
   @media only screen and (max-width: 520px) { 
-        .key {
+        /* .key {
             margin: 2px;
             height: 40px;
             min-width: 25px;
@@ -438,6 +438,25 @@ footer {
             font-size: 15px;
         
             transition: background .1s ease-in-out;
+        } */
+
+        .not-found-text {
+
+            margin-top: 3rem;
+        }
+
+        .back-link {
+            margin-top: 5rem;
+        }
+        
+        .back-link > i {
+            margin-right: 10px;
+        }
+
+        .not-affiliated {
+            margin-top: 80px;
+
+            width: 80%;
         }
     }
 
