@@ -11,7 +11,10 @@
         </h1>
         
         <x-game></x-game>
-        
+        <div class="learn-container">
+            <span class="learn-text">Learn how to play</span>
+            <img class="arrow" src="/images/arrow-32.png" alt="arrow">
+        </div>
 
         <x-keyboard />
 

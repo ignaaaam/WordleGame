@@ -383,10 +383,33 @@ footer {
     margin-right: 10px;
 }
 
+.learn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    position: absolute;
+    right: 2rem;
+    top: 93vh;
+
+    animation: float 4s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+.arrow {
+    transform: rotate(0.5turn) rotateY(180deg);
+
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
 
 
 @media only screen and (max-width: 720px) {
+
+    
+    
 
     .key {
         margin: 2px;
@@ -426,7 +449,22 @@ footer {
         padding: 4rem;
     }
   }
+  @media only screen and (max-width: 870px) {
+        .learn-container {
+                
+            right: 2rem;
+            top: 3vh;
+        }
 
+        .learn-text {
+            font-size:.8rem;
+        }
+
+        .arrow {
+            width: 28px;
+            height: 28px;
+        }
+  }
   @media only screen and (max-width: 520px) { 
         /* .key {
             margin: 2px;
@@ -439,6 +477,7 @@ footer {
         
             transition: background .1s ease-in-out;
         } */
+
 
         .not-found-text {
 
