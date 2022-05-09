@@ -12,8 +12,10 @@
         
         <x-game></x-game>
         <div class="learn-container">
-            <span class="learn-text">Learn how to play</span>
-            <img class="arrow" src="/images/arrow-32.png" alt="arrow">
+            <a href="#section-play">
+                <span class="learn-text">Learn how to play</span>
+                <img class="arrow" src="/images/arrow-32.png" alt="arrow">
+            </a>
         </div>
 
         <x-keyboard />
@@ -22,12 +24,12 @@
         <iframe class="prime-iframe2" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=13&l=ur1&category=pw&banner=156QRCST8H1YEB0GVER2&f=ifr&linkID=65aabbf832e42c7c98faaec224f69efe&t=ignathedev-21&tracking_id=ignathedev-21" width="468" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
         <iframe class="prime-iframe3" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=48&l=ur1&category=pw&banner=0EY4WWAVQJ8VYDJQHT02&f=ifr&t=ignathedev-21&tracking_id=ignathedev-21" width="728" height="90" scrolling="no" border="0" marginwidth="0" style="border:none; margin-top: 1rem;" frameborder="0" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
 
-        <section class="section__how">
+        <section class="section__how" id="section-how">
                 <h1 class="heading">Wordle Game: Guess the Hidden Word</h1>
                 <p class="rules">The rules are very simple: You need to guess the hidden word in 5 tries. To get started, just type any word on the first line. If the letter is guessed correctly and is in the correct place, it will be highlighted in green, if the letter is in the word, but in the wrong place - in yellow, and if the letter is not in the word, it will remain gray. Can you guess the hidden word in 5 tries?</p>
         </section>
         
-        <section class="section__howto">
+        <section class="section__howto" id="section-play">
             <div class="container">
                 <div class="wordle-text">
                     <h1 class="heading heading__title ">How to play the Wordle Game?</h1>
