@@ -26,31 +26,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Tile)
 /* harmony export */ });
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var Tile = /*#__PURE__*/function () {
   function Tile(position) {
     _classCallCheck(this, Tile);
-
     _defineProperty(this, "letter", "");
-
     _defineProperty(this, "status", "");
-
     this.position = position;
   }
-
   _createClass(Tile, [{
     key: "fill",
     value: function fill(key) {
@@ -64,53 +56,49 @@ var Tile = /*#__PURE__*/function () {
   }], [{
     key: "updateStatusesForRow",
     value: function updateStatusesForRow(row, theWord) {
-      theWord = theWord.split(""); // check for correct letters...
+      theWord = theWord.split("");
 
+      // check for correct letters...
       var _iterator = _createForOfIteratorHelper(row),
-          _step;
-
+        _step;
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var tile = _step.value;
-
           if (theWord[tile.position] === tile.letter) {
             tile.status = "correct";
             theWord[tile.position] = null;
           }
-        } // check for present letters...
+        }
 
+        // check for present letters...
       } catch (err) {
         _iterator.e(err);
       } finally {
         _iterator.f();
       }
-
       var _iterator2 = _createForOfIteratorHelper(row.filter(function (tile) {
-        return !tile.status;
-      })),
-          _step2;
-
+          return !tile.status;
+        })),
+        _step2;
       try {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var _tile = _step2.value;
-
           if (theWord.includes(_tile.letter)) {
             _tile.status = "present";
             theWord[theWord.indexOf(_tile.letter)] = null;
           }
-        } // anything that remains is absent...
+        }
 
+        // anything that remains is absent...
       } catch (err) {
         _iterator2.e(err);
       } finally {
         _iterator2.f();
       }
-
       var _iterator3 = _createForOfIteratorHelper(row.filter(function (tile) {
-        return !tile.status;
-      })),
-          _step3;
-
+          return !tile.status;
+        })),
+        _step3;
       try {
         for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
           var _tile2 = _step3.value;
@@ -123,10 +111,8 @@ var Tile = /*#__PURE__*/function () {
       }
     }
   }]);
-
   return Tile;
 }();
-
 
 
 /***/ }),
@@ -161,19 +147,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Tile__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tile */ "./resources/js/Tile.js");
 /* harmony import */ var _3_letter_words__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./3-letter-words */ "./resources/js/3-letter-words.js");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -184,24 +163,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   errors: !1,
   message: "",
   letters: ["QWERTYUIOP".split(""), "ASDFGHJKL".split(""), ["Delete"].concat(_toConsumableArray("ZXCVBNM".split("")), ["Enter"])],
-
   get currentRow() {
     return this.board[this.currentRowIndex];
   },
-
   get currentGuess() {
     return this.currentRow.map(function (e) {
       return e.letter;
     }).join("");
   },
-
   get remainingGuesses() {
     return this.guessesAllowed - this.currentRowIndex - 1;
   },
-
   init: function init() {
     var _this = this;
-
     this.board = Array.from({
       length: this.guessesAllowed
     }, function () {
@@ -217,12 +191,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   fillTile: function fillTile(e) {
     var _iterator = _createForOfIteratorHelper(this.currentRow),
-        _step;
-
+      _step;
     try {
       for (_iterator.s(); !(_step = _iterator.n()).done;) {
         var t = _step.value;
-
         if (!t.letter) {
           t.fill(e);
           break;
@@ -236,12 +208,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   emptyTile: function emptyTile() {
     var _iterator2 = _createForOfIteratorHelper(_toConsumableArray(this.currentRow).reverse()),
-        _step2;
-
+      _step2;
     try {
       for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
         var e = _step2.value;
-
         if (e.letter) {
           e.empty();
           break;
@@ -256,21 +226,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   submitGuess: function submitGuess() {
     if (!(this.currentGuess.length < this.theWord.length)) {
       if (!_3_letter_words__WEBPACK_IMPORTED_MODULE_1__.threeWords.includes(this.currentGuess.toUpperCase())) return this.errors = !0, void (this.message = "Invalid word...");
-
       if (_Tile__WEBPACK_IMPORTED_MODULE_0__["default"].updateStatusesForRow(this.currentRow, this.theWord), this.currentGuess === this.theWord) {
         var r = function r(_r, s) {
           confetti(Object.assign({}, t, s, {
             particleCount: Math.floor(e * _r)
           }));
         };
-
         this.state = "complete", this.message = "You Win!";
         var e = 200,
-            t = {
-          origin: {
-            y: .7
-          }
-        };
+          t = {
+            origin: {
+              y: .7
+            }
+          };
         r(.25, {
           spread: 26,
           startVelocity: 55

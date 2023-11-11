@@ -1,4 +1,4 @@
-export let threeWords = [
+export const threeWords = [
     "AAH",
     "AAL",
     "AAS",

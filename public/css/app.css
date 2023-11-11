@@ -70,18 +70,9 @@ iframe {
 }
 
 .row.current .tile:empty:first-of-type {
-    -webkit-animation: fade 2s;
-            animation: fade 2s;
-    -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
-    -webkit-animation-iteration-count: infinite;
-            animation-iteration-count: infinite;
-}
-
-@-webkit-keyframes fade {
-    50% {
-        background: rgba(255, 255, 255, .05)
-    }
+    animation: fade 2s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
 }
 
 @keyframes fade {
@@ -290,40 +281,17 @@ output:empty {
 .soon {
     color: var(--present-color);
     text-shadow: 0 0 12px #FDC53A;
-    -webkit-animation: glow 2s, float 3s;
-            animation: glow 2s, float 3s;
-    -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
-    -webkit-animation-iteration-count: infinite;
-            animation-iteration-count: infinite;
+    animation: glow 2s, float 3s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
 
     text-align: center;
-}
-
-@-webkit-keyframes glow {
-    50% {
-        text-shadow: 0 0 0 #FDC53A;
-    }
 }
 
 @keyframes glow {
     50% {
         text-shadow: 0 0 0 #FDC53A;
     }
-}
-@-webkit-keyframes float {
-    0% {
-    
-    transform: translatey(0px);
-}
-50% {
-   
-    transform: translatey(-20px);
-}
-100% {
-   
-    transform: translatey(0px);
-}
 }
 @keyframes float {
     0% {
@@ -425,13 +393,9 @@ footer {
     right: 2rem;
     top: 93vh;
 
-    -webkit-animation: float 4s;
-
-            animation: float 4s;
-    -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
-    -webkit-animation-iteration-count: infinite;
-            animation-iteration-count: infinite;
+    animation: float 4s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
 }
 
 .arrow {
